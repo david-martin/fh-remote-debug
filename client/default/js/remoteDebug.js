@@ -23,10 +23,10 @@ var fhRemoteDebug = {
           try {
             if (data.status === 'ok' && data.command != null) {
               fhRemoteDebug.log('ajax success: ' + (Date.now() - start) + ' : ' + JSON.stringify(data));
-              eval(data);
+              eval(data.command);
               fhRemoteDebug.log('evaled');
             } else {
-              fhRemoteDebug.log('no command from server');
+              //fhRemoteDebug.log('no command from server');
             }
           } catch (e) {
             fhRemoteDebug.log('error parsing res: ' + res);
