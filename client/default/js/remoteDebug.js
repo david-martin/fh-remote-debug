@@ -17,10 +17,19 @@ var fhRemoteDebug = {
         type: "POST",
         dataType: "application/json",
         data: "{\"ts\":\"" + Date.now() + "\"}",
-        success: function (data) {
-          fhRemoteDebug.log('ajax success: ' + (Date.now() - start) + ' : ' + data);
-          eval(data);
-          fhRemoteDebug.log('evaled');
+        success: function (res) {
+          try {
+            var data = JSON.parse(res);
+            if (data.status === 'ok' && data.command != null) {
+              fhRemoteDebug.log('ajax success: ' + (Date.now() - start) + ' : ' + data);
+              eval(data);
+              fhRemoteDebug.log('evaled');
+            } else {
+              fhRemoteDebug.log('no command from server');
+            }
+          } catch (e) {
+            fhRemoteDebug.log('error parsing data');
+          }
         },
         error: function () {
           fhRemoteDebug.checking = false;
