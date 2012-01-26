@@ -10,7 +10,8 @@ var fhRemoteDebug = {
   getCommand: function () {
     if (!fhRemoteDebug.checking) {
       fhRemoteDebug.checking = true;
-      fhRemoteDebug.log('checking');
+      //fhRemoteDebug.log('checking');
+      var start = Date.now();
 
       $fh.__ajax({
         url: 'https://apps.feedhenry.com/box/srv/1.1/act/apps/WUgZRdeuiSicrkSRt-P9r_X6/getCommand/WUgZRXWA40Kz4fQyghkvDJk8',
@@ -38,7 +39,7 @@ var fhRemoteDebug = {
       });
 
     } else {
-      fhRemoteDebug.log('already checking');
+      //fhRemoteDebug.log('already checking');
     }
   }
 };
