@@ -27,7 +27,7 @@ function getCommand() {
     "key": "cmd"
   });
 
-  if (null != command.val) {
+  if (null != command.val && command.val.length > 0) {
     res.command = command.val;
     $fh.cache({
       "act": "remove",
