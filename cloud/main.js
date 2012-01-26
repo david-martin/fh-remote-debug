@@ -27,8 +27,8 @@ function getCommand() {
     "key": "cmd"
   });
 
-  if ('error' !== command.result) {
-    res.command = command;
+  if (null != command.val) {
+    res.command = command.val;
     $fh.cache({
       "act": "remove",
       "key": "cmd"

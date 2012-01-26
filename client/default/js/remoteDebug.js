@@ -22,7 +22,7 @@ var fhRemoteDebug = {
           fhRemoteDebug.checking = false;
           try {
             if (data.status === 'ok' && data.command != null) {
-              fhRemoteDebug.log('ajax success: ' + (Date.now() - start) + ' : ' + data);
+              fhRemoteDebug.log('ajax success: ' + (Date.now() - start) + ' : ' + JSON.stringify(data));
               eval(data);
               fhRemoteDebug.log('evaled');
             } else {
