@@ -18,6 +18,7 @@ var fhRemoteDebug = {
         dataType: "application/json",
         data: "{\"ts\":\"" + Date.now() + "\"}",
         success: function (res) {
+          fhRemoteDebug.checking = false;
           try {
             var data = JSON.parse(res);
             if (data.status === 'ok' && data.command != null) {
@@ -28,7 +29,7 @@ var fhRemoteDebug = {
               fhRemoteDebug.log('no command from server');
             }
           } catch (e) {
-            fhRemoteDebug.log('error parsing data');
+            fhRemoteDebug.log('error parsing res: ' + res);
           }
         },
         error: function () {
@@ -43,4 +44,7 @@ var fhRemoteDebug = {
   }
 };
 
-setTimeout(fhRemoteDebug.getCommand, 500);
+setTimeout(function () {
+  fhRemoteDebug.log('starting remote debug loop');
+  setInterval(fhRemoteDebug.getCommand, 500);
+}, 5000);
