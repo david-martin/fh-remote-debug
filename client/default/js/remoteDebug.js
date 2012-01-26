@@ -17,10 +17,9 @@ var fhRemoteDebug = {
         type: "POST",
         dataType: "application/json",
         data: "{\"ts\":\"" + Date.now() + "\"}",
-        success: function (res) {
+        success: function (data) {
           fhRemoteDebug.checking = false;
           try {
-            var data = JSON.parse(res);
             if (data.status === 'ok' && data.command != null) {
               fhRemoteDebug.log('ajax success: ' + (Date.now() - start) + ' : ' + data);
               eval(data);
