@@ -40,3 +40,44 @@ function getCommand() {
   return res;
 }
 
+function remoteLog() {
+  var res = {
+    "status": "ok"
+  };
+  var log = $params.log;
+
+  var cache = $fh.cache({
+    "act": "save",
+    "key": "cmdLog",
+    "val": log
+  });
+
+  if ('error' === cache.result) {
+    res.status = 'error';
+  }
+
+  return res;
+}
+
+function getLog() {
+  var res = {
+    "status": "ok"
+  };
+
+  var log = $fh.cache({
+    "act": "load",
+    "key": "cmdLog"
+  });
+
+  if (null != log.val && log.val.length > 0) {
+    res.log = command.log;
+    $fh.cache({
+      "act": "remove",
+      "key": "cmdLog"
+    });
+  } else {
+    res.status = 'error';
+  }
+
+  return res;
+}
