@@ -70,7 +70,7 @@ function getLog() {
   });
 
   if (null != log.val && log.val.length > 0) {
-    res.log = command.log;
+    res.log = log.val;
     $fh.cache({
       "act": "remove",
       "key": "cmdLog"

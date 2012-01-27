@@ -30,7 +30,7 @@ var fhRemoteDebug = {
                 var result, response;
 
                 try {
-                  result = eval(command);
+                  result = eval(data.command);
                   response = result;
                   if (null != result && 'object' === typeof result) {
                     response = '[Object]';
