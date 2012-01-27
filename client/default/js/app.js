@@ -102,7 +102,7 @@
   };
 
   var updateEmbedScript = function () {
-    var src = $('#appJsScript').attr('src').replace('app.js', 'remoteDebug.js');
+    var src = document.location.protocol + '//' + document.location.host + $('#appJsScript').attr('src').replace('app.js', 'remoteDebug.js');
 
     $fh.env(function (res) {
       var appId = res.application;
